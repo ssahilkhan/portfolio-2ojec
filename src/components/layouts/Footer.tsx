@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-border bg-background/50 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-4">
+        <div className="grid gap-8 md:gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <span className="text-2xl font-bold text-gradient-orange">
               {portfolioData.personal_info.name}

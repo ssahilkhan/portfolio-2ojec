@@ -7,6 +7,7 @@ import QuantumBackground from "@/components/effects/QuantumBackground"
 import CustomCursor from "@/components/effects/CustomCursor"
 import PageTransition from "@/components/effects/PageTransition"
 import Providers from "@/components/layouts/Providers"
+import ThemeProvider from "@/lib/theme-provider"
 import { portfolioData } from "@/data/portfolio"
 
 const geistSans = Geist({
@@ -37,17 +38,19 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}>
-      <body className="relative min-h-full bg-background font-sans text-foreground">
-        <Providers>
-          <QuantumBackground />
-          <CustomCursor />
-          <Navigation />
-          <main className="min-h-screen">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-        </Providers>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
+      <body className="relative min-h-full overflow-x-hidden bg-background font-sans text-foreground">
+        <ThemeProvider>
+          <Providers>
+            <QuantumBackground />
+            <CustomCursor />
+            <Navigation />
+            <main className="min-h-screen">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   )

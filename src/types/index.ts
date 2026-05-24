@@ -104,6 +104,35 @@ export interface BlogPost {
   slug: string
 }
 
+export interface SkillJourneyMilestone {
+  title: string
+  date: string
+  description: string
+  type: "course" | "project" | "achievement"
+}
+
+export interface SkillJourney {
+  category: string
+  items: string[]
+  milestones: SkillJourneyMilestone[]
+  linkedProjects: string[]
+}
+
+export interface RoleTransition {
+  title: string
+  period: string
+  note?: string
+}
+
+export interface SpaceJourneyEntry {
+  platform: string
+  handle: string
+  followers: string
+  period: string
+  focus: string[]
+  milestones: string[]
+}
+
 export interface PortfolioData {
   personal_info: PersonalInfo
   branding_hint: {

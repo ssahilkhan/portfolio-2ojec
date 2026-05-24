@@ -10,7 +10,7 @@ export default function SectionWrapper({ children, className, id }: SectionWrapp
   return (
     <section
       id={id}
-      className={cn("relative mx-auto max-w-7xl px-6 py-24 md:py-32", className)}
+      className={cn("relative mx-auto max-w-7xl px-6 py-16 md:py-24 lg:py-32", className)}
     >
       {children}
     </section>

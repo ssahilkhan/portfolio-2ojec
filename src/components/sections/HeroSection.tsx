@@ -39,7 +39,7 @@ export default function HeroSection() {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/projects"
-            className="group relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange to-magenta px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,166,35,0.3)]"
+            className="group relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange to-magenta px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_var(--glow-orange)]"
           >
             View My Work
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -52,7 +52,7 @@ export default function HeroSection() {
           </Link>
         </div>
 
-        <div className="mt-12 flex items-center justify-center gap-8 text-sm text-muted">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted">
           {portfolioData.branding_hint.focus_areas.map((area) => (
             <span key={area} className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-orange" />

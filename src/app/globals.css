@@ -1,20 +1,98 @@
 @import "tailwindcss";
 
+/* ============================================ */
+/* DARK THEME (default :root)                   */
+/* Cyberpunk futuristic aesthetic               */
+/* SSR default — no flicker for existing users  */
+/* ============================================ */
+:root,
+.dark {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+
+  --text-primary: #e8e8f0;
+  --text-muted: #9ca3af;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
+
+  --glow-orange: rgba(245, 166, 35, 0.15);
+  --glow-magenta: rgba(233, 30, 140, 0.15);
+  --glow-blue: rgba(44, 62, 122, 0.3);
+
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  --scrollbar-thumb: rgba(245, 166, 35, 0.3);
+  --selection-bg: rgba(245, 166, 35, 0.3);
+
+  --grid-bg-color: rgba(255, 255, 255, 0.03);
+
+  --orange: var(--brand-orange);
+}
+
+/* ============================================ */
+/* LIGHT THEME (.light)                         */
+/* Apple-inspired premium clean aesthetic       */
+/* ============================================ */
+.light {
+  --bg-primary: #f5f5f7;
+  --bg-secondary: #e8e8ed;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-card-hover: rgba(255, 255, 255, 0.9);
+
+  --text-primary: #1d1d1f;
+  --text-muted: #6b7280;
+
+  --border-color: rgba(0, 0, 0, 0.06);
+  --border-hover: rgba(0, 0, 0, 0.12);
+
+  --glow-orange: rgba(245, 166, 35, 0.08);
+  --glow-magenta: rgba(233, 30, 140, 0.08);
+  --glow-blue: rgba(44, 62, 122, 0.12);
+
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.8);
+
+  --scrollbar-thumb: rgba(245, 166, 35, 0.2);
+  --selection-bg: rgba(245, 166, 35, 0.15);
+
+  --grid-bg-color: rgba(0, 0, 0, 0.03);
+
+  --orange: var(--brand-navy-light);
+}
+
+/* Brand colors — fixed across both themes */
+:root {
+  --brand-orange: #F5A623;
+  --brand-magenta: #E91E8C;
+  --brand-navy: #1a2744;
+  --brand-navy-light: #2C3E7A;
+  --brand-coral: #E53935;
+}
+
+/* ============================================ */
+/* Tailwind v4 @theme inline tokens             */
+/* Maps semantic Tailwind classes → CSS vars    */
+/* ============================================ */
 @theme inline {
-  --color-background: #0a0a0f;
-  --color-foreground: #e8e8f0;
-  --color-navy: #1a2744;
-  --color-navy-light: #2C3E7A;
-  --color-orange: #F5A623;
-  --color-magenta: #E91E8C;
-  --color-coral: #E53935;
-  --color-muted: #9ca3af;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-card: rgba(255, 255, 255, 0.04);
-  --color-card-hover: rgba(255, 255, 255, 0.08);
-  --color-glow-orange: rgba(245, 166, 35, 0.15);
-  --color-glow-magenta: rgba(233, 30, 140, 0.15);
-  --color-glow-blue: rgba(44, 62, 122, 0.3);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border-color);
+  --color-card: var(--bg-card);
+  --color-card-hover: var(--bg-card-hover);
+  --color-navy: var(--brand-navy);
+  --color-navy-light: var(--brand-navy-light);
+  --color-orange: var(--orange);
+  --color-magenta: var(--brand-magenta);
+  --color-coral: var(--brand-coral);
+  --color-glow-orange: var(--glow-orange);
+  --color-glow-magenta: var(--glow-magenta);
+  --color-glow-blue: var(--glow-blue);
+
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), "Fira Code", monospace;
 
@@ -26,79 +104,100 @@
   --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
 }
 
+/* ============================================ */
+/* KEYFRAMES                                    */
+/* ============================================ */
 @keyframes glow {
-  from { box-shadow: 0 0 20px rgba(245, 166, 35, 0.1), 0 0 40px rgba(245, 166, 35, 0.05); }
-  to { box-shadow: 0 0 30px rgba(245, 166, 35, 0.2), 0 0 60px rgba(245, 166, 35, 0.1); }
+  from { box-shadow: 0 0 20px var(--glow-orange), 0 0 40px transparent; }
+  to   { box-shadow: 0 0 30px var(--glow-orange), 0 0 60px var(--glow-orange); }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  50%      { transform: translateY(-20px); }
 }
 
 @keyframes pulse-slow {
   0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
+  50%      { opacity: 0.8; }
 }
 
 @keyframes typing {
   from { width: 0; }
-  to { width: 100%; }
+  to   { width: 100%; }
 }
 
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ============================================ */
+/* THEME TRANSITION                             */
+/* Smooth fade between light/dark               */
+/* ============================================ */
+html {
+  transition: background-color 0.3s ease;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================ */
+/* UTILITY CLASSES                              */
+/* ============================================ */
 .glass {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
 }
 
 .glass-hover:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
 }
 
 .neon-glow-orange {
-  box-shadow: 0 0 20px rgba(245, 166, 35, 0.15), 0 0 40px rgba(245, 166, 35, 0.05);
+  box-shadow: 0 0 20px var(--glow-orange), 0 0 40px transparent;
 }
 
 .neon-glow-magenta {
-  box-shadow: 0 0 20px rgba(233, 30, 140, 0.15), 0 0 40px rgba(233, 30, 140, 0.05);
+  box-shadow: 0 0 20px var(--glow-magenta), 0 0 40px transparent;
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #F5A623 0%, #E91E8C 50%, #2C3E7A 100%);
+  background: linear-gradient(135deg, var(--orange) 0%, var(--brand-magenta) 50%, var(--brand-navy) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-orange {
-  background: linear-gradient(135deg, #F5A623, #E53935);
+  background: linear-gradient(135deg, var(--orange), var(--brand-coral));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-magenta {
-  background: linear-gradient(135deg, #E91E8C, #2C3E7A);
+  background: linear-gradient(135deg, var(--brand-magenta), var(--brand-navy-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .grid-bg {
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image:
+    linear-gradient(var(--grid-bg-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-bg-color) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
+/* ============================================ */
+/* SCROLLBAR                                    */
+/* ============================================ */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -108,19 +207,26 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(245, 166, 35, 0.3);
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
+  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(245, 166, 35, 0.5);
+  background: var(--brand-orange);
 }
 
+/* ============================================ */
+/* SELECTION                                    */
+/* ============================================ */
 ::selection {
-  background: rgba(245, 166, 35, 0.3);
-  color: #fff;
+  background: var(--selection-bg);
+  color: var(--text-primary);
 }
 
+/* ============================================ */
+/* LENIS SMOOTH SCROLL                         */
+/* ============================================ */
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -139,4 +245,12 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+/* ============================================ */
+/* THEME LOADING GUARD                         */
+/* Prevents transition flash on page load      */
+/* ============================================ */
+html.theme-loading * {
+  transition: none !important;
 }

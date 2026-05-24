@@ -5,6 +5,7 @@ import { skillCategories, portfolioData } from "@/data/portfolio"
 import SectionWrapper from "@/components/ui/SectionWrapper"
 import GlowCard from "@/components/ui/GlowCard"
 import Badge from "@/components/ui/Badge"
+import SkillJourney from "@/components/sections/SkillJourney"
 
 const container = {
   hidden: { opacity: 0 },
@@ -59,6 +60,24 @@ export default function SkillsPage() {
             </GlowCard>
           </motion.div>
         ))}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="mt-20"
+      >
+        <div className="mb-10 text-center">
+          <Badge variant="orange">Journey</Badge>
+          <h2 className="mt-4 text-3xl font-bold md:text-4xl">
+            Skill <span className="text-gradient">Journey</span>
+          </h2>
+          <p className="mx-auto mt-2 max-w-xl text-sm text-muted">
+            Expand each category to see the timeline of projects, courses, and milestones
+          </p>
+        </div>
+        <SkillJourney />
       </motion.div>
 
       <motion.div

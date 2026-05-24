@@ -1,11 +1,13 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { Award, ExternalLink } from "lucide-react"
+import { Award, ExternalLink, Eye } from "lucide-react"
 import { portfolioData } from "@/data/portfolio"
 import SectionWrapper from "@/components/ui/SectionWrapper"
 import GlowCard from "@/components/ui/GlowCard"
 import Badge from "@/components/ui/Badge"
+import CertificatePopup from "@/components/sections/CertificatePopup"
 
 const container = {
   hidden: { opacity: 0 },
@@ -21,6 +23,14 @@ const item = {
 }
 
 export default function AchievementsPage() {
+  const [popupOpen, setPopupOpen] = useState(false)
+  const [certIndex, setCertIndex] = useState(0)
+
+  const openCert = (i: number) => {
+    setCertIndex(i)
+    setPopupOpen(true)
+  }
+
   return (
     <SectionWrapper className="pt-32">
       <motion.div
@@ -73,24 +83,30 @@ export default function AchievementsPage() {
             Certifications
           </h2>
           <div className="space-y-4">
-            {portfolioData.certifications.map((cert) => (
+            {portfolioData.certifications.map((cert, i) => (
               <motion.div key={cert.title} variants={item}>
-                <GlowCard glow="magenta">
+                <GlowCard glow="magenta" onClick={() => openCert(i)}>
                   <div className="flex items-start justify-between gap-4">
-                    <div>
+                    <div className="flex-1">
                       <h3 className="font-semibold">{cert.title}</h3>
                       <p className="text-sm text-muted">{cert.provider} &middot; {cert.date}</p>
                     </div>
-                    {cert.link && (
-                      <a
-                        href={cert.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="shrink-0 rounded-full p-2 text-muted transition-colors hover:text-orange hover:bg-orange/10"
-                      >
-                        <ExternalLink size={14} />
-                      </a>
-                    )}
+                    <div className="flex items-center gap-1 shrink-0">
+                      <span className="rounded-full p-2 text-muted transition-colors hover:text-magenta hover:bg-magenta/10">
+                        <Eye size={14} />
+                      </span>
+                      {cert.link && (
+                        <a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="rounded-full p-2 text-muted transition-colors hover:text-orange hover:bg-orange/10"
+                        >
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </GlowCard>
               </motion.div>
@@ -98,6 +114,12 @@ export default function AchievementsPage() {
           </div>
         </motion.div>
       </div>
+
+      <CertificatePopup
+        isOpen={popupOpen}
+        onClose={() => setPopupOpen(false)}
+        initialIndex={certIndex}
+      />
     </SectionWrapper>
   )
 }

@@ -24,7 +24,7 @@ export default function NotFoundPage() {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange to-magenta px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,166,35,0.3)]"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange to-magenta px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_var(--glow-orange)]"
           >
             <Home size={16} />
             Return Home

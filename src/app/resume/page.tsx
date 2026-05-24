@@ -31,7 +31,7 @@ export default function ResumePage() {
       >
         <a
           href={`mailto:${personal_info.email}?subject=Resume Request`}
-          className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange to-magenta px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,166,35,0.3)]"
+          className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange to-magenta px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_var(--glow-orange)]"
         >
           <Download size={16} />
           Request Resume

@@ -9,9 +9,9 @@ interface GlowCardProps {
 
 export default function GlowCard({ children, className, glow = "orange", onClick }: GlowCardProps) {
   const glowColors = {
-    orange: "hover:shadow-[0_0_30px_rgba(245,166,35,0.1)]",
-    magenta: "hover:shadow-[0_0_30px_rgba(233,30,140,0.1)]",
-    navy: "hover:shadow-[0_0_30px_rgba(44,62,122,0.2)]",
+    orange: "hover:shadow-[0_0_30px_var(--glow-orange)]",
+    magenta: "hover:shadow-[0_0_30px_var(--glow-magenta)]",
+    navy: "hover:shadow-[0_0_30px_var(--glow-blue)]",
   }
 
   return (

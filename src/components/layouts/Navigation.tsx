@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import ThemeToggle from "@/components/ui/ThemeToggle"
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -30,6 +31,7 @@ export default function Navigation() {
   }, [])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false)
   }, [pathname])
 
@@ -77,13 +79,19 @@ export default function Navigation() {
           })}
         </div>
 
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="relative z-50 rounded-full p-2 text-foreground md:hidden hover:bg-white/5 transition-colors"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <div className={cn(isOpen && "hidden")}>
+            <ThemeToggle />
+          </div>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="relative z-50 rounded-full p-2 text-foreground md:hidden hover:bg-white/5 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -115,6 +123,16 @@ export default function Navigation() {
                 </Link>
               </motion.div>
             ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.05 + 0.15 }}
+              className="mt-6 flex flex-col items-center gap-3"
+            >
+              <div className="h-px w-16 bg-border" />
+              <ThemeToggle />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

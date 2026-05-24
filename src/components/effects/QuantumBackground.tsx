@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useMemo, useEffect } from "react"
+import { useRef, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Float, MeshDistortMaterial } from "@react-three/drei"
 import * as THREE from "three"
@@ -8,16 +8,19 @@ import * as THREE from "three"
 function QuantumParticles({ count = 60 }) {
   const pointsRef = useRef<THREE.Points>(null!)
 
-  const [positions, geometry] = useMemo(() => {
+  const geometry = useMemo(() => {
     const pos = new Float32Array(count * 3)
     for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 12
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 12
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 12
+      const r1 = ((i * 3) * 9301 + 49297) % 233280 / 233280
+      const r2 = ((i * 3 + 1) * 9301 + 49297) % 233280 / 233280
+      const r3 = ((i * 3 + 2) * 9301 + 49297) % 233280 / 233280
+      pos[i * 3] = (r1 - 0.5) * 12
+      pos[i * 3 + 1] = (r2 - 0.5) * 12
+      pos[i * 3 + 2] = (r3 - 0.5) * 12
     }
     const geo = new THREE.BufferGeometry()
     geo.setAttribute("position", new THREE.BufferAttribute(pos, 3))
-    return [pos, geo]
+    return geo
   }, [count])
 
   useFrame(({ clock }) => {

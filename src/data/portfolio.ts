@@ -1,4 +1,77 @@
-import { PortfolioData } from "@/types"
+import { PortfolioData, SkillJourney, RoleTransition, SpaceJourneyEntry } from "@/types"
+
+export const roleTransitions: { company: string; transitions: RoleTransition[] }[] = [
+  {
+    company: "Deep Infinity (AI Startup)",
+    transitions: [
+      { title: "System Tester Intern", period: "June 2025 – Apr 2026", note: "Internship" },
+      { title: "Permanent Intern", period: "May 2026 – Present", note: "Promoted to permanent role" },
+    ],
+  },
+]
+
+export const spaceJourney: SpaceJourneyEntry = {
+  platform: "Instagram",
+  handle: "@space_time_dilation",
+  followers: "1K+",
+  period: "2020 – Present",
+  focus: ["Astronomy", "Astrophotography", "Space Science Education", "Telescope Operations"],
+  milestones: [
+    "Started sharing telescope captures during pandemic lockdown (2020)",
+    "Built community of 1K+ space enthusiasts",
+    "Regular astrophotography captures: Moon, planets, deep-sky objects",
+    "Educational content on constellations, planetary events, and space science",
+  ],
+}
+
+export const skillJourneys: SkillJourney[] = [
+  {
+    category: "Quantum Computing",
+    items: ["Quantum Circuits", "Qubits", "Quantum Gates", "Measurement", "NISQ Concepts", "Noise Models", "Qiskit", "IBM Quantum Platform"],
+    linkedProjects: ["Quantum Job Tracker Dashboard"],
+    milestones: [
+      { title: "AQVH Quantum Hackathon Finalist", date: "Oct 2025", description: "National-level finalist among 100+ teams", type: "achievement" },
+      { title: "Quantum Job Tracker Dashboard", date: "Sep 2025 – Jan 2026", description: "Built real-time monitoring dashboard using IBM Quantum API", type: "project" },
+      { title: "NPTEL Quantum Computing Certification", date: "2026", description: "Introduction to Quantum Computing: Quantum Algorithms and Qiskit", type: "course" },
+    ],
+  },
+  {
+    category: "AI & ML",
+    items: ["NumPy", "Pandas", "Scikit-learn", "Transformers"],
+    linkedProjects: ["AI Student Inquiry Chatbot", "Face Detection System"],
+    milestones: [
+      { title: "Deep Infinity AI Validation", date: "June 2025 – Present", description: "Validating healthcare AI radiology systems", type: "project" },
+      { title: "AI Student Inquiry Chatbot", date: "Mar 2024 – May 2024", description: "Built multi-intent Dialogflow chatbot for college admissions", type: "project" },
+      { title: "Face Detection System", date: "2024", description: "Real-time CV pipeline using OpenCV and MTCNN", type: "project" },
+    ],
+  },
+  {
+    category: "LLMs",
+    items: ["Llama 3", "Qwen2-VL", "MedGemma", "BLIP", "Phi3 Vision", "LLaVA-Med"],
+    linkedProjects: [],
+    milestones: [
+      { title: "Explored Medical LLMs", date: "2025", description: "Worked with MedGemma, LLaVA-Med, BLIP for medical image understanding", type: "course" },
+      { title: "Multi-modal Model Experience", date: "2025", description: "Hands-on with Qwen2-VL, Phi3 Vision for vision-language tasks", type: "course" },
+    ],
+  },
+  {
+    category: "Web Development",
+    items: ["HTML", "CSS", "React.js", "Node.js", "MongoDB"],
+    linkedProjects: ["EduCycle Project"],
+    milestones: [
+      { title: "EduCycle Marketplace", date: "May 2025 – Jul 2025", description: "Built full MERN stack marketplace with 500+ active users", type: "project" },
+      { title: "Portfolio Website", date: "2026", description: "Built this portfolio using Next.js, Tailwind CSS, Framer Motion", type: "project" },
+    ],
+  },
+  {
+    category: "Computer Vision",
+    items: ["OpenCV", "MTCNN"],
+    linkedProjects: ["Face Detection System"],
+    milestones: [
+      { title: "Face Detection System", date: "2024", description: "Real-time detection with 94% accuracy using Haar Cascades + MTCNN", type: "project" },
+    ],
+  },
+]
 
 export const portfolioData: PortfolioData = {
   personal_info: {
@@ -34,11 +107,11 @@ export const portfolioData: PortfolioData = {
   },
   experience: [
     {
-      title: "System Tester Intern",
+      title: "System Tester Intern → Permanent Intern",
       company: "Deep Infinity (AI Startup)",
       period: "June 2025 – Present",
       location: "Remote",
-      impact: "Validating AI systems that will diagnose patients. Not mock projects — real healthcare software.",
+      impact: "Promoted from intern to permanent role (May 2026). Validating AI systems that will diagnose patients — not mock projects, real healthcare software.",
       responsibilities: [
         "Executed functional, regression, and exploratory test suites on AI-powered radiology systems used for actual clinical diagnosis",
         "Validated ML model outputs against ground truth data — catching edge case failures before deployment",
@@ -140,6 +213,9 @@ export const portfolioData: PortfolioData = {
     { title: "Introduction to Quantum Computing with Azure Quantum", provider: "Microsoft", date: "2025", link: "https://learn.microsoft.com/en-us/users/sahilkhansorakayalapeta-3371/achievements/fqmppehx" },
     { title: "NPTEL – Introduction to Quantum Computing: Quantum Algorithms and Qiskit", provider: "NPTEL Swayam", date: "2026" },
     { title: "Introduction to Prompt Engineering", provider: "IBM", date: "Jun 2024", link: "https://courses.edx.org/certificates/c98c8ff5e4244b9288c988d4442086c9" },
+    { title: "Google Cloud Arcade Facilitator Program", provider: "Google Cloud", date: "2025" },
+    { title: "WISER Quantum Program Phase 2", provider: "WISER", date: "2026" },
+    { title: "AQVH Quantum Hackathon National Finalist", provider: "AQVH", date: "Oct 2025" },
   ],
   coursework: ["Data Structures & Algorithms", "Operating Systems", "Database Management Systems", "Computer Networks", "Machine Learning", "Linear Algebra", "Probability & Statistics", "Quantum Computing"],
   areas_of_interest: ["Quantum Computing", "AI Systems", "Scientific Computing", "Advanced Algorithms"],
