@@ -222,7 +222,7 @@ export const portfolioData: PortfolioData = {
   contact_links: {
     email: "mailto:sorakayalapetasahilkhan@gmail.com",
     github: "https://github.com/ssahilkhan",
-    linkedin: "https://linkedin.com/in/sorakayalapetasahilkhan",
+    linkedin: "https://www.linkedin.com/in/sorakayalapetasahilkhan",
     leetcode: "https://leetcode.com/u/ssahilkhan/",
   },
   branding: {

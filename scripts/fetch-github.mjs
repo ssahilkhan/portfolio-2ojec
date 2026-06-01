@@ -2,7 +2,7 @@ import { writeFileSync, existsSync, mkdirSync } from "fs"
 import { resolve, dirname } from "path"
 
 const TOKEN = process.env.GITHUB_TOKEN
-const USERNAME = "ssaahhil832"
+const USERNAME = "ssahilkhan"
 const DATA_PATH = resolve(import.meta.dirname, "../src/data/github-data.ts")
 
 const projectRepoMap = {
@@ -74,7 +74,7 @@ function reposWithoutProject(repos, mapping) {
     Object.values(projectRepoMap).flat()
   )
   return repos
-    .filter((r) => !r.fork && r.name !== `${USERNAME}.github.io`)
+    .filter((r) => !r.fork)
     .filter((r) => !mappedRepoNames.has(r.name))
     .map((r) => ({
       name: r.name,
