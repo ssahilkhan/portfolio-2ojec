@@ -85,6 +85,16 @@ export default function ContactPage() {
             <Camera size={12} className="text-magenta" />
             @space_time_dilation
           </a>
+
+          <a
+            href="https://instagram.com/sahilkhan.e"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-xs text-foreground/70 hover:text-orange transition-colors"
+          >
+            <Camera size={12} className="text-magenta" />
+            @sahilkhan.e
+          </a>
         </motion.div>
 
         <motion.div
