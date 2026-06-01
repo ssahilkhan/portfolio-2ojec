@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, Globe, Code2, Send, MapPin, Camera, ExternalLink } from "lucide-react"
+import { Mail, Globe, Code2, Send, MapPin, Camera, ExternalLink, MessageCircle } from "lucide-react"
 import { portfolioData } from "@/data/portfolio"
 import SectionWrapper from "@/components/ui/SectionWrapper"
 import GlowCard from "@/components/ui/GlowCard"
@@ -11,7 +11,8 @@ import Badge from "@/components/ui/Badge"
 const contactMethods = [
   { name: "Email", value: portfolioData.personal_info.email, url: portfolioData.contact_links.email, icon: Mail },
   { name: "GitHub", value: "ssahilkhan", url: portfolioData.contact_links.github, icon: ExternalLink },
-  { name: "LinkedIn", value: "sorakayalapetasahilkhan", url: portfolioData.contact_links.linkedin, icon: Globe },
+  { name: "LinkedIn", value: "sahil-khan-sorakayalapeta", url: portfolioData.contact_links.linkedin, icon: Globe },
+  { name: "Discord", value: "ssahilkhan", url: portfolioData.contact_links.discord, icon: MessageCircle },
   { name: "LeetCode", value: "ssahilkhan", url: portfolioData.contact_links.leetcode, icon: Code2 },
 ]
 

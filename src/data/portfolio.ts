@@ -224,6 +224,7 @@ export const portfolioData: PortfolioData = {
     github: "https://github.com/ssahilkhan",
     linkedin: "https://www.linkedin.com/in/sahil-khan-sorakayalapeta-9006a028a",
     leetcode: "https://leetcode.com/u/ssahilkhan/",
+    discord: "https://discord.com/users/ssahilkhan",
   },
   branding: {
     headlines: [
@@ -311,6 +312,7 @@ export const skillCategories = [
 export const socialLinks = [
   { name: "GitHub", url: portfolioData.contact_links.github, icon: "github" },
   { name: "LinkedIn", url: portfolioData.contact_links.linkedin, icon: "linkedin" },
+  { name: "Discord", url: portfolioData.contact_links.discord, icon: "message-circle" },
   { name: "Email", url: portfolioData.contact_links.email, icon: "mail" },
   { name: "LeetCode", url: portfolioData.contact_links.leetcode, icon: "code" },
 ]
