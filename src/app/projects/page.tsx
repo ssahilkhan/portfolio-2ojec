@@ -60,18 +60,26 @@ function GitHubBadge({ repos }: { repos: { name: string; stars: number; language
       </div>
       <div className="flex flex-wrap gap-2">
         {repos.map((repo) => (
-          <a
+          <span
             key={repo.name}
-            href={repo.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="group inline-flex items-center gap-1 rounded-full bg-white/5 px-2.5 py-0.5 text-[10px] text-muted transition-colors hover:bg-orange/10 hover:text-orange"
+            onClick={(e) => {
+              e.stopPropagation()
+              window.open(repo.url, "_blank", "noopener")
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault()
+                window.open(repo.url, "_blank", "noopener")
+              }
+            }}
+            role="link"
+            tabIndex={0}
+            className="group inline-flex cursor-pointer items-center gap-1 rounded-full bg-white/5 px-2.5 py-0.5 text-[10px] text-muted transition-colors hover:bg-orange/10 hover:text-orange"
           >
             <GitHubIcon size={10} />
             {repo.name}
             <ExternalLink size={8} className="opacity-0 transition-opacity group-hover:opacity-100" />
-          </a>
+          </span>
         ))}
       </div>
     </div>
