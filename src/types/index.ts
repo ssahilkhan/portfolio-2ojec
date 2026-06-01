@@ -59,6 +59,7 @@ export interface Certification {
   provider: string
   date: string
   link?: string
+  image?: string
 }
 
 export interface Strength {

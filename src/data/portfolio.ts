@@ -83,7 +83,7 @@ export const portfolioData: PortfolioData = {
     student_id: "JNTUA College of Engineering, Anantapur",
   },
   branding_hint: {
-    tagline: "Quantum Developer | ML Enthusiast | Systems Thinker",
+    tagline: "Quantum Developer | ML Enthusiast | Quantum-AI Builder",
     focus_areas: ["Quantum Computing", "AI/ML Systems", "Full-Stack Development"],
     unique_selling_point: "Undergraduate with national-level quantum hackathon finalist status and hands-on experience with IBM Quantum Platform",
     target_roles: ["Quantum Software Engineer", "ML Engineer", "Research Intern"],
@@ -209,7 +209,7 @@ export const portfolioData: PortfolioData = {
     { title: "Google Cloud Arcade Program", description: "Hands-on cloud labs and AI workflow experience", date: "2025" },
   ],
   certifications: [
-    { title: "Introduction to Quantum Technologies & Applications", provider: "QClairvoyance Quantum Labs Pvt. Ltd", date: "Oct 2025", link: "https://github.com/ssaahhil832/certifications/blob/main/S%20Sahil%20Khan_Certificate.pdf" },
+    { title: "Introduction to Quantum Technologies & Applications", provider: "QClairvoyance Quantum Labs Pvt. Ltd", date: "Oct 2025", link: "https://github.com/ssaahhil832/certifications/blob/main/S%20Sahil%20Khan_Certificate.pdf", image: "/images/certificates/quantum-technologies.jpg" },
     { title: "Introduction to Quantum Computing with Azure Quantum", provider: "Microsoft", date: "2025", link: "https://learn.microsoft.com/en-us/users/sahilkhansorakayalapeta-3371/achievements/fqmppehx" },
     { title: "NPTEL – Introduction to Quantum Computing: Quantum Algorithms and Qiskit", provider: "NPTEL Swayam", date: "2026" },
     { title: "Introduction to Prompt Engineering", provider: "IBM", date: "Jun 2024", link: "https://courses.edx.org/certificates/c98c8ff5e4244b9288c988d4442086c9" },
@@ -221,9 +221,9 @@ export const portfolioData: PortfolioData = {
   areas_of_interest: ["Quantum Computing", "AI Systems", "Scientific Computing", "Advanced Algorithms"],
   contact_links: {
     email: "mailto:sorakayalapetasahilkhan@gmail.com",
-    github: "https://github.com/ssaahhil832",
+    github: "https://github.com/ssahilkhan",
     linkedin: "https://linkedin.com/in/sorakayalapetasahilkhan",
-    leetcode: "https://leetcode.com/u/ssaahhil832/",
+    leetcode: "https://leetcode.com/u/ssahilkhan/",
   },
   branding: {
     headlines: [

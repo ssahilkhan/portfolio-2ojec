@@ -1,44 +1,88 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useCallback } from "react"
+
+const TRAIL_COUNT = 5
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [visible, setVisible] = useState(false)
+  const trailsRef = useRef<HTMLDivElement[]>([])
+  const positionsRef = useRef<{ x: number; y: number }[]>(
+    Array.from({ length: TRAIL_COUNT }, () => ({ x: 0, y: 0 }))
+  )
+  const rafRef = useRef<number>(0)
+  const visibleRef = useRef(false)
+
+  const setRef = useCallback((el: HTMLDivElement | null, i: number) => {
+    if (el) trailsRef.current[i] = el
+  }, [])
 
   useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>
+
     const onMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
-      if (!visible) setVisible(true)
+      positionsRef.current[0] = { x: e.clientX, y: e.clientY }
+      if (!visibleRef.current) {
+        visibleRef.current = true
+      }
+      clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        visibleRef.current = false
+      }, 2000)
     }
-    const onLeave = () => setVisible(false)
-    const onEnter = () => setVisible(true)
+
+    const animate = () => {
+      for (let i = TRAIL_COUNT - 1; i > 0; i--) {
+        const lead = positionsRef.current[i - 1]
+        const current = positionsRef.current[i]
+        current.x += (lead.x - current.x) * 0.25
+        current.y += (lead.y - current.y) * 0.25
+      }
+
+      for (let i = 0; i < TRAIL_COUNT; i++) {
+        const el = trailsRef.current[i]
+        if (!el) continue
+        const pos = positionsRef.current[i]
+        const opacity = visibleRef.current ? 1 - i * 0.18 : 0
+        const scale = 1 - i * 0.12
+        el.style.transform = `translate(${pos.x - 4}px, ${pos.y - 4}px) scale(${scale})`
+        el.style.opacity = String(Math.max(0, opacity))
+      }
+
+      rafRef.current = requestAnimationFrame(animate)
+    }
 
     window.addEventListener("mousemove", onMove)
-    document.addEventListener("mouseleave", onLeave)
-    document.addEventListener("mouseenter", onEnter)
+    rafRef.current = requestAnimationFrame(animate)
 
     return () => {
       window.removeEventListener("mousemove", onMove)
-      document.removeEventListener("mouseleave", onLeave)
-      document.removeEventListener("mouseenter", onEnter)
+      cancelAnimationFrame(rafRef.current)
+      clearTimeout(timeout)
     }
-  }, [visible])
-
-  if (typeof window === "undefined") return null
+  }, [])
 
   return (
-    <div
-      className="pointer-events-none fixed z-[9999] hidden md:block"
-      style={{
-        left: position.x,
-        top: position.y,
-        opacity: visible ? 1 : 0,
-        transform: "translate(-50%, -50%)",
-        transition: "opacity 0.3s ease",
-      }}
-    >
-      <div className="h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full border border-orange/40 bg-orange/5 blur-[2px] transition-all duration-300" />
-    </div>
+    <>
+      {Array.from({ length: TRAIL_COUNT }).map((_, i) => (
+        <div
+          key={i}
+          ref={(el) => setRef(el, i)}
+          className="pointer-events-none fixed z-[9999] hidden md:block"
+          style={{
+            width: 8,
+            height: 8,
+            borderRadius: "50%",
+            background: i === 0
+              ? "rgba(212, 175, 55, 0.6)"
+              : "rgba(212, 175, 55, 0.2)",
+            boxShadow: i === 0
+              ? "0 0 12px rgba(212, 175, 55, 0.3), 0 0 24px rgba(212, 175, 55, 0.1)"
+              : "none",
+            transition: "opacity 0.15s ease",
+            willChange: "transform, opacity",
+          }}
+        />
+      ))}
+    </>
   )
 }

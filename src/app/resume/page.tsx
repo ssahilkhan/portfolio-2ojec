@@ -27,14 +27,24 @@ export default function ResumePage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="mx-auto mb-12 flex max-w-2xl justify-center gap-4"
+        className="mx-auto mb-12 flex max-w-2xl flex-wrap justify-center gap-4"
       >
         <a
-          href={`mailto:${personal_info.email}?subject=Resume Request`}
+          href="/sahilResume-quantum.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange to-magenta px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_var(--glow-orange)]"
         >
           <Download size={16} />
-          Request Resume
+          View PDF
+        </a>
+        <a
+          href="/sahilResume-quantum.pdf"
+          download
+          className="glass-hover inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition-all duration-300"
+        >
+          <Download size={16} />
+          Download
         </a>
         <a
           href={portfolioData.contact_links.linkedin}

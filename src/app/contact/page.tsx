@@ -10,9 +10,9 @@ import Badge from "@/components/ui/Badge"
 
 const contactMethods = [
   { name: "Email", value: portfolioData.personal_info.email, url: portfolioData.contact_links.email, icon: Mail },
-  { name: "GitHub", value: "ssaahhil832", url: portfolioData.contact_links.github, icon: ExternalLink },
+  { name: "GitHub", value: "ssahilkhan", url: portfolioData.contact_links.github, icon: ExternalLink },
   { name: "LinkedIn", value: "sorakayalapetasahilkhan", url: portfolioData.contact_links.linkedin, icon: Globe },
-  { name: "LeetCode", value: "ssaahhil832", url: portfolioData.contact_links.leetcode, icon: Code2 },
+  { name: "LeetCode", value: "ssahilkhan", url: portfolioData.contact_links.leetcode, icon: Code2 },
 ]
 
 export default function ContactPage() {
@@ -37,7 +37,7 @@ export default function ContactPage() {
         <h1 className="mt-4 text-4xl font-bold md:text-5xl">
           Get In <span className="text-gradient">Touch</span>
         </h1>
-        <p className="mx-auto mt-4 max-w-xl text-muted">
+        <p className="mx-auto mt-4 max-w-xl text-foreground/80">
           Have a question, idea, or opportunity? Let&apos;s connect.
         </p>
       </motion.div>
@@ -64,13 +64,13 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium">{method.name}</p>
-                  <p className="text-xs text-muted">{method.value}</p>
+                  <p className="text-xs text-foreground/80">{method.value}</p>
                 </div>
               </a>
             )
           })}
 
-          <div className="mt-6 flex items-center gap-2 text-xs text-muted">
+          <div className="mt-6 flex items-center gap-2 text-xs text-foreground/70">
             <MapPin size={12} className="text-orange" />
             {portfolioData.personal_info.location}
           </div>
@@ -79,7 +79,7 @@ export default function ContactPage() {
             href="https://instagram.com/space_time_dilation"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-xs text-muted hover:text-orange transition-colors"
+            className="flex items-center gap-2 text-xs text-foreground/70 hover:text-orange transition-colors"
           >
             <Camera size={12} className="text-magenta" />
             @space_time_dilation
@@ -97,12 +97,12 @@ export default function ContactPage() {
               <div className="flex flex-col items-center justify-center py-12 text-center">
                 <Send size={40} className="mb-4 text-orange" />
                 <h3 className="text-xl font-bold">Message Sent!</h3>
-                <p className="text-sm text-muted">Thanks for reaching out. I&apos;ll get back to you soon.</p>
+                <p className="text-sm text-foreground/80">Thanks for reaching out. I&apos;ll get back to you soon.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="name" className="mb-2 block text-xs font-medium text-muted">
+                  <label htmlFor="name" className="mb-2 block text-xs font-medium text-foreground/80">
                     Name
                   </label>
                   <input
@@ -111,12 +111,12 @@ export default function ContactPage() {
                     required
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                    className="w-full rounded-lg border border-border bg-white/5 px-4 py-3 text-sm text-foreground placeholder-muted/50 outline-none transition-colors focus:border-orange/50 focus:ring-1 focus:ring-orange/20"
+                    className="w-full rounded-lg border border-border bg-white/5 px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none transition-colors focus:border-gold focus:ring-1 focus:ring-gold/20"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="mb-2 block text-xs font-medium text-muted">
+                  <label htmlFor="email" className="mb-2 block text-xs font-medium text-foreground/80">
                     Email
                   </label>
                   <input
@@ -125,12 +125,12 @@ export default function ContactPage() {
                     required
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                    className="w-full rounded-lg border border-border bg-white/5 px-4 py-3 text-sm text-foreground placeholder-muted/50 outline-none transition-colors focus:border-orange/50 focus:ring-1 focus:ring-orange/20"
+                    className="w-full rounded-lg border border-border bg-white/5 px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none transition-colors focus:border-gold focus:ring-1 focus:ring-gold/20"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="mb-2 block text-xs font-medium text-muted">
+                  <label htmlFor="message" className="mb-2 block text-xs font-medium text-foreground/80">
                     Message
                   </label>
                   <textarea
@@ -139,7 +139,7 @@ export default function ContactPage() {
                     rows={5}
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full resize-none rounded-lg border border-border bg-white/5 px-4 py-3 text-sm text-foreground placeholder-muted/50 outline-none transition-colors focus:border-orange/50 focus:ring-1 focus:ring-orange/20"
+                    className="w-full resize-none rounded-lg border border-border bg-white/5 px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none transition-colors focus:border-gold focus:ring-1 focus:ring-gold/20"
                     placeholder="What would you like to say?"
                   />
                 </div>

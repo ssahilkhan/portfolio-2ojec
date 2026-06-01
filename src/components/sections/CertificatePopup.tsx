@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useCallback, useState } from "react"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ExternalLink, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react"
 import { portfolioData } from "@/data/portfolio"
@@ -45,7 +46,7 @@ export default function CertificatePopup({ isOpen, onClose, initialIndex = 0 }: 
   }, [isOpen, onClose, goNext, goPrev])
 
   useEffect(() => {
-    setCurrentIndex(initialIndex)
+    if (isOpen) setCurrentIndex(initialIndex)
   }, [initialIndex, isOpen])
 
   return (
@@ -100,15 +101,36 @@ export default function CertificatePopup({ isOpen, onClose, initialIndex = 0 }: 
                   <div
                     className={`mx-auto mb-6 flex items-center justify-center transition-transform duration-300 ${zoomed ? "scale-150" : ""}`}
                   >
-                    <div className="flex h-48 w-full max-w-sm items-center justify-center rounded-xl bg-gradient-to-br from-orange/5 to-magenta/5 border border-border">
-                      <div className="text-center p-4">
-                        <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-orange/10 flex items-center justify-center">
-                          <ExternalLink size={28} className="text-orange" />
-                        </div>
-                        <p className="text-xs text-muted">Certificate preview</p>
-                        <p className="text-xs text-muted mt-1">(image/PDF not yet linked)</p>
+                    {current.image ? (
+                      <div className="relative h-48 w-full max-w-sm overflow-hidden rounded-xl border border-border">
+                        <Image
+                          src={current.image}
+                          alt={current.title}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 640px) 100vw, 384px"
+                        />
                       </div>
-                    </div>
+                    ) : current.link ? (
+                      <div className="flex h-48 w-full max-w-sm items-center justify-center rounded-xl bg-gradient-to-br from-orange/5 to-magenta/5 border border-border">
+                        <div className="text-center p-4">
+                          <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-orange/10 flex items-center justify-center">
+                            <ExternalLink size={28} className="text-orange" />
+                          </div>
+                          <p className="text-xs text-muted">Certificate available online</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex h-48 w-full max-w-sm items-center justify-center rounded-xl bg-gradient-to-br from-orange/5 to-magenta/5 border border-border">
+                        <div className="text-center p-4">
+                          <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-orange/10 flex items-center justify-center">
+                            <ExternalLink size={28} className="text-orange" />
+                          </div>
+                          <p className="text-xs text-muted">Certificate preview</p>
+                          <p className="text-xs text-muted mt-1">(image coming soon)</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   <h3 className="mb-2 text-xl font-bold">{current.title}</h3>

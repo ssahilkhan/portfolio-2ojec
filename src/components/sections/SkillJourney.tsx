@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, BookOpen, GitBranch, Trophy, ExternalLink } from "lucide-react"
+import { ChevronDown, ChevronUp, BookOpen, GitBranch, Trophy, ExternalLink } from "lucide-react"
 import { skillJourneys } from "@/data/portfolio"
 import GlowCard from "@/components/ui/GlowCard"
 import Badge from "@/components/ui/Badge"
@@ -26,7 +26,7 @@ export default function SkillJourney() {
     <div className="space-y-4">
       {skillJourneys.map((journey) => {
         const isOpen = expanded === journey.category
-        const Icon = isOpen ? ChevronDown : ChevronDown
+        const Icon = isOpen ? ChevronUp : ChevronDown
 
         return (
           <motion.div

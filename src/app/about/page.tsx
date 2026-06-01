@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { MapPin, GraduationCap, Target, Zap } from "lucide-react"
 import { portfolioData } from "@/data/portfolio"
@@ -72,6 +73,25 @@ export default function AboutPage() {
           animate="visible"
           className="lg:col-span-2 space-y-6"
         >
+          <motion.div
+            custom={1}
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="overflow-hidden rounded-xl border border-border"
+          >
+            <div className="relative h-64 w-full overflow-hidden">
+              <Image
+                src="/images/sahil_professional_Image.jpeg"
+                alt={portfolioData.personal_info.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                priority
+              />
+            </div>
+          </motion.div>
+
           <GlowCard glow="orange">
             <div className="flex items-center gap-3 mb-4">
               <MapPin size={18} className="text-orange" />

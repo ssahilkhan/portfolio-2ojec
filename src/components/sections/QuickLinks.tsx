@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Code2, Brain, Briefcase, Trophy, BookOpen, Contact } from "lucide-react"
+import { Code2, Brain, Briefcase, Trophy, BookOpen, Contact, FileText } from "lucide-react"
 
 const quickLinks = [
   { name: "Skills", path: "/skills", icon: Code2, color: "text-orange", desc: "Technologies & expertise" },
@@ -10,6 +10,7 @@ const quickLinks = [
   { name: "Experience", path: "/experience", icon: Briefcase, color: "text-orange", desc: "Professional journey" },
   { name: "Achievements", path: "/achievements", icon: Trophy, color: "text-magenta", desc: "Milestones & awards" },
   { name: "Blog", path: "/blog", icon: BookOpen, color: "text-orange", desc: "Thoughts & insights" },
+  { name: "Resume", path: "/resume", icon: FileText, color: "text-orange", desc: "View my CV" },
   { name: "Contact", path: "/contact", icon: Contact, color: "text-magenta", desc: "Get in touch" },
 ]
 
