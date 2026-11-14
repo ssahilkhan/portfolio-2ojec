@@ -15,7 +15,7 @@ export default function CreatorStudio() {
       <ul className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {videos.map((v) => (
           <li key={v.id}>
-            <a href={`https://www.youtube.com/watch?v=${v.id}`} target="_blank" rel="noopener noreferrer" className="group block">
+            <a href={`https://www.youtube.com/watch?v=${v.id}`} target="_blank" rel="noopener noreferrer" data-cursor="Play" className="group block">
               <div className="overflow-hidden rounded-xl border border-border bg-surface">
                 {/* eslint-disable-next-line @next/next/no-img-element -- static export, YouTube serves its own thumbnails */}
                 <img

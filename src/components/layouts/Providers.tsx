@@ -6,6 +6,7 @@ import { MotionConfig } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { usePathname } from "next/navigation"
+import Cursor from "./Cursor"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -38,5 +39,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     window.scrollTo(0, 0)
   }, [pathname])
 
-  return <MotionConfig reducedMotion="user">{children}</MotionConfig>
+  return (
+    <MotionConfig reducedMotion="user">
+      {children}
+      <Cursor />
+    </MotionConfig>
+  )
 }

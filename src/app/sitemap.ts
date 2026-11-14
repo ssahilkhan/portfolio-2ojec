@@ -4,8 +4,8 @@ import { site } from "@/data/site"
 
 export const dynamic = "force-static"
 
-// Testimonials and blog are left out until their content is verified (see docs/PROJECT_INVENTORY.md).
-const pages = ["", "projects", "about", "experience", "skills", "achievements", "resume", "contact"]
+// Blog is left out until its posts are real (see docs/PROJECT_INVENTORY.md).
+const pages = ["", "projects", "about", "experience", "skills", "achievements", "resume", "contact", "testimonials"]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

@@ -24,6 +24,7 @@ function Card({ p }: { p: Project }) {
   return (
     <Link
       href={`/projects/${p.slug}/`}
+      data-cursor="View project"
       onPointerMove={tilt}
       onPointerLeave={untilt}
       className="tilt group flex min-h-[26rem] flex-col rounded-2xl border border-border bg-surface p-7 hover:border-border-hover sm:p-9 lg:h-[min(34rem,68vh)] lg:w-[min(36rem,62vw)] lg:shrink-0"

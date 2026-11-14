@@ -5,13 +5,13 @@
    previous theme so every page restyles without being rewritten. */
 :root,
 .dark {
-  --bg-primary: #000000;
-  --bg-secondary: #141418;
-  --bg-card: #141418;
-  --bg-card-hover: #1C1C22;
+  --bg-primary: #08080B;
+  --bg-secondary: #111116;
+  --bg-card: #111116;
+  --bg-card-hover: #19191F;
 
-  --text-primary: #F2F2F5;
-  --text-muted: #8E8E99;
+  --text-primary: #F5F5F7;
+  --text-muted: #A1A1AA;
 
   --border-color: #26262D;
   --border-hover: #3E3E48;
@@ -28,10 +28,10 @@
 
   --grid-bg-color: rgba(255, 255, 255, 0.035);
 
-  --accent: #7C6CFF;
+  --accent: #8067FF;
   --accent-ink: #FFFFFF;
   --wave: #4C8DFF;
-  --orange: #7C6CFF;
+  --orange: #8067FF;
   --brand-magenta: #4C8DFF;
 }
 
@@ -169,6 +169,8 @@ body { transition: background-color 0.3s ease, color 0.3s ease; }
 /* Buttons (Button3D). A flat face with a thin solid edge underneath that
    closes up on press. */
 .key3d {
+  translate: var(--mx, 0px) var(--my, 0px);
+  transition: translate 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   --depth: 3px;
   --rx: 0deg;
   --ry: 0deg;
@@ -237,6 +239,7 @@ body { transition: background-color 0.3s ease, color 0.3s ease; }
 .light .key-cobalt { --key-side: #372AA8; }
 
 @media (prefers-reduced-motion: reduce) {
+  .key3d { translate: none; }
   .key3d-face { transition: none; transform: none !important; }
   .key3d:hover .key3d-face { transform: none !important; }
   .key3d:active .key3d-face { transform: translateY(calc(var(--depth) - 1px)) !important; }
@@ -270,4 +273,28 @@ html.theme-loading * { transition: none !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tilt { transform: none !important; }
+}
+
+/* Cursor ring (Cursor.tsx) and the soft spotlight that follows it. Both exist
+   only when .has-cursor is set: a mouse, and no reduced-motion request. */
+.cursor-ring { display: none; }
+.has-cursor .cursor-ring {
+  position: fixed; left: 0; top: 0; z-index: 90; pointer-events: none;
+  display: grid; place-items: center;
+  width: 2.25rem; height: 2.25rem; margin: -1.125rem 0 0 -1.125rem;
+  border: 1px solid color-mix(in srgb, var(--text-primary) 45%, transparent);
+  border-radius: 9999px;
+  transition: width .3s, height .3s, margin .3s, background-color .3s, border-color .3s, opacity .3s;
+}
+.cursor-ring span {
+  font: 600 0.7rem/1 var(--font-grotesk), system-ui, sans-serif;
+  color: var(--accent-ink); white-space: nowrap; opacity: 0; transition: opacity .2s;
+}
+.has-cursor .cursor-ring[data-state="link"] { width: 3.25rem; height: 3.25rem; margin: -1.625rem 0 0 -1.625rem; border-color: var(--accent); }
+.has-cursor .cursor-ring[data-state="label"] { width: 5.5rem; height: 5.5rem; margin: -2.75rem 0 0 -2.75rem; background: var(--accent); border-color: var(--accent); }
+.cursor-ring[data-state="label"] span { opacity: 1; }
+.has-cursor .cursor-ring[data-state="hidden"] { opacity: 0; }
+.has-cursor body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(520px circle at var(--cx, -999px) var(--cy, -999px), color-mix(in srgb, var(--accent) 7%, transparent), transparent 70%);
 }

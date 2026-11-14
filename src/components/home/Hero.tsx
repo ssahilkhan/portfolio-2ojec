@@ -1,7 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import Image from "next/image"
+import Portrait from "@/components/ui/Portrait"
 import { motion } from "framer-motion"
 import Button3D from "@/components/ui/Button3D"
 import { site } from "@/data/site"
@@ -55,17 +55,8 @@ export default function Hero() {
           transition={{ duration: 1, ease, delay: 0.45 }}
           className="relative mx-auto w-[min(72vw,20rem)] lg:mx-0 lg:w-[22rem]"
         >
-          <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-            <Image
-              src="/images/sahil_portrait.jpeg"
-              alt="Portrait of Sahil Khan"
-              width={720}
-              height={900}
-              priority
-              className="aspect-[4/5] h-auto w-full object-cover"
-            />
-          </div>
-          <figcaption className="mt-3 flex items-center gap-2 text-sm text-muted">
+          <Portrait priority className="w-full" />
+          <figcaption className="mt-5 flex items-center justify-center gap-2 text-sm text-muted">
             <span className="h-2 w-2 rounded-full bg-accent" aria-hidden />
             ML Engineer at DeepInfinity.ai
           </figcaption>

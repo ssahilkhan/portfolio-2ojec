@@ -19,7 +19,7 @@ interface Button3DProps {
   onClick?: () => void
 }
 
-// Tilt toward the mouse only; touch and pen skip it.
+// Tilt toward the mouse and lean a few pixels after it (magnetic); touch and pen skip it.
 function tilt(e: PointerEvent<HTMLElement>) {
   if (e.pointerType !== "mouse") return
   const r = e.currentTarget.getBoundingClientRect()
@@ -27,11 +27,15 @@ function tilt(e: PointerEvent<HTMLElement>) {
   const y = (e.clientY - r.top) / r.height - 0.5
   e.currentTarget.style.setProperty("--ry", `${(x * 14).toFixed(1)}deg`)
   e.currentTarget.style.setProperty("--rx", `${(-y * 12).toFixed(1)}deg`)
+  e.currentTarget.style.setProperty("--mx", `${(x * 10).toFixed(1)}px`)
+  e.currentTarget.style.setProperty("--my", `${(y * 8).toFixed(1)}px`)
 }
 
 function reset(e: PointerEvent<HTMLElement>) {
   e.currentTarget.style.setProperty("--ry", "0deg")
   e.currentTarget.style.setProperty("--rx", "0deg")
+  e.currentTarget.style.setProperty("--mx", "0px")
+  e.currentTarget.style.setProperty("--my", "0px")
 }
 
 export default function Button3D({

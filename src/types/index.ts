@@ -62,16 +62,10 @@ export interface Certification {
   image?: string
 }
 
-export interface Strength {
-  strength: string
-  evidence: string
-}
-
 export interface About {
   who_i_am: string
   what_im_doing_now: string
   what_i_aim_to_become: string
-  strengths: Strength[]
 }
 
 export interface Branding {

@@ -319,38 +319,11 @@ export const portfolioData: PortfolioData = {
     tone: "confident, elite, futuristic",
   },
   about: {
-    who_i_am: "I grew up in a small village in Andhra Pradesh where resourcefulness was a survival skill. That mindset stuck. While others learned programming from tutorials, I started building quantum circuits on IBM's real quantum computers — not simulators. I don't wait for opportunities. I create them.",
+    who_i_am: "I grew up in Rompicherla, a village in Chittoor district, and went to the government high school there. Science came first through the night sky: since 2020 I have posted my own telescope captures on Instagram. Programming came next, then machine learning, then quantum computing.",
     what_im_doing_now: "Computer Science student (8.9 CGPA) at JNTUA College of Engineering and, since May 2026, Machine Learning Engineer at DeepInfinity.ai, building clinical speech-to-record pipelines with NVIDIA Nemotron, Riva, Whisper and LLMs. On the side I build AI agents, n8n automations, free browser tools, and quantum ML experiments with Qiskit.",
-    what_i_aim_to_become: "I don't want a generic software job. I'm building toward being the rare engineer who bridges quantum theory and real-world deployment. I want to work on systems that matter — quantum-powered healthcare, defense-grade AI, next-generation computing infrastructure. The future is quantum. I intend to be part of building it.",
-    strengths: [
-      { strength: "Self-starter", evidence: "Built quantum projects before most peers even learned what Qiskit is" },
-      { strength: "Problem-solver", evidence: "Led a team to national-level quantum hackathon finals (100+ teams)" },
-      { strength: "Production-minded", evidence: "Already shipping code that talks to IBM's production backends" },
-      { strength: "Adaptable", evidence: "Switched between quantum, ML, and full-stack seamlessly" },
-    ],
+    what_i_aim_to_become: "I want to build AI that people depend on, in healthcare and other places where a wrong answer has a cost, and keep working at quantum computing until I can apply it to real problems."
   },
 }
-
-export const testimonials = [
-  {
-    name: "AQVH Hackathon Judges",
-    role: "National Hackathon Panel",
-    company: "AQVH Quantum Hackathon",
-    quote: "Sahil's team demonstrated exceptional technical leadership in translating complex quantum API data into an intuitive, production-ready dashboard. Their ability to ship working code under a 6-week deadline was remarkable.",
-  },
-  {
-    name: "Deep Infinity Team Lead",
-    role: "Engineering Manager",
-    company: "Deep Infinity",
-    quote: "Sahil showed a rare ability to understand both the AI system architecture and the clinical validation requirements. His edge case detection prevented potential misdiagnoses from reaching production.",
-  },
-  {
-    name: "Academic Mentor",
-    role: "Faculty Advisor",
-    company: "JNTUA College of Engineering",
-    quote: "One of the most self-driven students I've encountered. Sahil doesn't just learn concepts — he ships production-quality code and leads teams effectively.",
-  },
-]
 
 export const blogPosts = [
   {

@@ -9,7 +9,7 @@ export default function LiveProjects() {
       <ul className="border-t border-border">
         {liveProjects.map((p) => (
           <li key={p.slug} className="grid gap-3 border-b border-border py-7 md:grid-cols-[1.1fr_1.4fr_auto] md:items-baseline md:gap-10">
-            <Link href={`/projects/${p.slug}/`} className="font-display text-2xl font-semibold tracking-tight hover:text-accent sm:text-3xl">
+            <Link href={`/projects/${p.slug}/`} data-cursor="View project" className="font-display text-2xl font-semibold tracking-tight hover:text-accent sm:text-3xl">
               {p.title}
             </Link>
             <p className="leading-relaxed text-muted">{p.summary}</p>

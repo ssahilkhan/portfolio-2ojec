@@ -7,7 +7,7 @@ const pages = [
   { name: "Experience", path: "/experience" },
   { name: "Skills", path: "/skills" },
   { name: "Achievements", path: "/achievements" },
-  { name: "Testimonials", path: "/testimonials" },
+  { name: "Recognition", path: "/testimonials" },
   { name: "Blog", path: "/blog" },
   { name: "Resume", path: "/resume" },
 ]

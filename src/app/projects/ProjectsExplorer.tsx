@@ -94,6 +94,7 @@ export default function ProjectsExplorer() {
             <li key={p.slug}>
               <Link
                 href={`/projects/${p.slug}/`}
+                data-cursor="View project"
                 className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-border-hover"
               >
                 <div className="flex items-center justify-between gap-4 text-sm text-muted">
