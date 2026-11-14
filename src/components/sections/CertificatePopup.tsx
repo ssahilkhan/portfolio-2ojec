@@ -46,6 +46,7 @@ export default function CertificatePopup({ isOpen, onClose, initialIndex = 0 }: 
   }, [isOpen, onClose, goNext, goPrev])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (isOpen) setCurrentIndex(initialIndex)
   }, [initialIndex, isOpen])
 

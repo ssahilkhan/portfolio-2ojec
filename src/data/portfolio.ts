@@ -86,7 +86,7 @@ export const skillJourneys: SkillJourney[] = [
 export const portfolioData: PortfolioData = {
   personal_info: {
     name: "Sahil Khan",
-    phone: "+91-9491282099",
+    phone: "",
     email: "sorakayalapetasahilkhan@gmail.com",
     location: "Chittoor, Andhra Pradesh, India",
     current_year: "3-2 B.Tech",

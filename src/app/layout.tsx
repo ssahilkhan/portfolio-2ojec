@@ -1,51 +1,85 @@
-import type { Metadata } from "next"
-import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import Navigation from "@/components/layouts/Navigation"
 import Footer from "@/components/layouts/Footer"
 import Providers from "@/components/layouts/Providers"
 import ThemeProvider from "@/lib/theme-provider"
-import { portfolioData } from "@/data/portfolio"
+import { site } from "@/data/site"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
-
-const display = Bricolage_Grotesque({
-  variable: "--font-display",
-  subsets: ["latin"],
-})
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] })
+const grotesk = Space_Grotesk({ variable: "--font-grotesk", subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: `${portfolioData.personal_info.name} | ${portfolioData.branding_hint.tagline}`,
-  description: portfolioData.summary,
-  keywords: ["machine learning engineer", "generative AI", "speech AI", "AI agents", "portfolio", portfolioData.personal_info.name],
-  authors: [{ name: portfolioData.personal_info.name }],
-  openGraph: {
-    title: `${portfolioData.personal_info.name} | Portfolio`,
-    description: portfolioData.branding_hint.tagline,
-    type: "website",
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} | ${site.role}`,
+    template: `%s | ${site.name}`,
   },
+  description: site.description,
+  keywords: [
+    "Sahil Khan",
+    "AI developer",
+    "machine learning engineer",
+    "speech AI",
+    "full-stack developer",
+    "quantum computing",
+    "blockchain",
+    "portfolio",
+  ],
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: site.url,
+    siteName: site.name,
+    title: `${site.name} | ${site.role}`,
+    description: site.description,
+    images: [{ url: "/images/sahil_portrait.jpeg", alt: site.name }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} | ${site.role}`,
+    description: site.description,
+    creator: "@SahilkhanS2006",
+    images: ["/images/sahil_portrait.jpeg"],
+  },
+  robots: { index: true, follow: true },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#000000",
+}
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+  jobTitle: site.role,
+  image: `${site.url}/images/sahil_portrait.jpeg`,
+  sameAs: [site.links.github, site.links.linkedin, site.links.youtube, site.links.instagram],
+}
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${display.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${grotesk.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="relative min-h-full overflow-x-hidden bg-background font-sans text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeProvider>
           <Providers>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-ink"
+            >
+              Skip to content
+            </a>
             <Navigation />
-            <main className="min-h-screen">{children}</main>
+            <main id="main" className="min-h-screen">{children}</main>
             <Footer />
           </Providers>
         </ThemeProvider>

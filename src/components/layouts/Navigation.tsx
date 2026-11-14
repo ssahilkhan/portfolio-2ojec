@@ -6,18 +6,16 @@ import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import ThemeToggle from "@/components/ui/ThemeToggle"
-import Button3D, { type KeyColor } from "@/components/ui/Button3D"
 
-const navLinks: { name: string; path: string; color: KeyColor }[] = [
-  { name: "Home", path: "/", color: "ink" },
-  { name: "About", path: "/about", color: "cobalt" },
-  { name: "Skills", path: "/skills", color: "mint" },
-  { name: "Projects", path: "/projects", color: "sun" },
-  { name: "Experience", path: "/experience", color: "coral" },
-  { name: "Achievements", path: "/achievements", color: "cobalt" },
-  { name: "Resume", path: "/resume", color: "mint" },
-  { name: "Blog", path: "/blog", color: "ink" },
-  { name: "Contact", path: "/contact", color: "coral" },
+const navLinks = [
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Experience", path: "/experience" },
+  { name: "Skills", path: "/skills" },
+  { name: "Achievements", path: "/achievements" },
+  { name: "Resume", path: "/resume" },
+  { name: "Blog", path: "/blog" },
+  { name: "Contact", path: "/contact" },
 ]
 
 export default function Navigation() {
@@ -26,9 +24,10 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   useEffect(() => {
@@ -36,47 +35,69 @@ export default function Navigation() {
     setIsOpen(false)
   }, [pathname])
 
+  const isActive = (path: string) => pathname === path || pathname.startsWith(`${path}/`)
+
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
-        scrolled || isOpen ? "glass border-b border-border" : "bg-transparent"
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        scrolled || isOpen ? "glass border-x-0 border-t-0" : "bg-transparent"
       )}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6" aria-label="Main">
-        <Link href="/" className="whitespace-nowrap font-display text-xl font-extrabold tracking-tight">
-          Sahil<span className="text-orange"> Khan</span>
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6" aria-label="Main">
+        <Link href="/" className="font-display text-lg font-semibold tracking-tight">
+          Sahil Khan
         </Link>
 
-        <div className="hidden items-center justify-end gap-x-2 xl:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {navLinks.map((l) => (
-            <Button3D key={l.path} href={l.path} color={l.color} size="sm" active={pathname === l.path}>
-              {l.name}
-            </Button3D>
+            <li key={l.path}>
+              <Link
+                href={l.path}
+                aria-current={isActive(l.path) ? "page" : undefined}
+                className={cn(
+                  "rounded-md px-3 py-2 text-sm transition-colors",
+                  isActive(l.path) ? "text-foreground" : "text-muted hover:text-foreground"
+                )}
+              >
+                {l.name}
+                {isActive(l.path) && <span className="mt-0.5 block h-px bg-accent" aria-hidden />}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="rounded-full p-2 text-foreground transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current xl:hidden"
+            className="rounded-md p-2 text-foreground lg:hidden"
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
+            aria-controls="mobile-nav"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </nav>
 
       {isOpen && (
-        <div className="grid max-h-[calc(100vh-4.5rem)] grid-cols-2 gap-x-4 gap-y-1 overflow-y-auto px-4 pt-2 pb-6 sm:grid-cols-3 xl:hidden">
-          {navLinks.map((l) => (
-            <Button3D key={l.path} href={l.path} color={l.color} block active={pathname === l.path}>
-              {l.name}
-            </Button3D>
+        <ul id="mobile-nav" className="max-h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-6 lg:hidden">
+          {[{ name: "Home", path: "/" }, ...navLinks].map((l) => (
+            <li key={l.path} className="border-b border-border last:border-0">
+              <Link
+                href={l.path}
+                aria-current={pathname === l.path ? "page" : undefined}
+                className={cn(
+                  "block py-3.5 font-display text-2xl",
+                  pathname === l.path ? "text-accent" : "text-foreground"
+                )}
+              >
+                {l.name}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </header>
   )
