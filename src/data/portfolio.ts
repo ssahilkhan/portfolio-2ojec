@@ -2,10 +2,10 @@ import { PortfolioData, SkillJourney, RoleTransition, SpaceJourneyEntry } from "
 
 export const roleTransitions: { company: string; transitions: RoleTransition[] }[] = [
   {
-    company: "Deep Infinity (AI Startup)",
+    company: "DeepInfinity.ai",
     transitions: [
       { title: "System Tester Intern", period: "June 2025 – Apr 2026", note: "Internship" },
-      { title: "Permanent Intern", period: "May 2026 – Present", note: "Promoted to permanent role" },
+      { title: "Machine Learning Engineer", period: "May 2026 – Present", note: "Moved from intern to full-time engineer" },
     ],
   },
 ]
@@ -36,8 +36,18 @@ export const skillJourneys: SkillJourney[] = [
     ],
   },
   {
+    category: "Speech AI & LLM Engineering",
+    items: ["NVIDIA Nemotron", "NVIDIA Riva", "NVIDIA NIM", "OpenAI Whisper", "Azure Speech", "pyannote.audio", "spaCy NER", "LLM APIs", "AI Agents", "n8n"],
+    linkedProjects: ["DeepInfinity Medical AI Workflow", "AI Notes Maker", "AI Job Analyzer"],
+    milestones: [
+      { title: "Machine Learning Engineer, DeepInfinity.ai", date: "May 2026 – Present", description: "Clinical speech pipeline; Nemotron STT fine-tuned from ~65% to 91% accuracy", type: "project" },
+      { title: "AI Notes Maker", date: "2026", description: "Streaming NVIDIA NIM / Nemotron study assistant with notes, knowledge map and PDF export", type: "project" },
+      { title: "IBM: Models and Platforms for Generative AI", date: "edX", description: "Verified certificate", type: "course" },
+    ],
+  },
+  {
     category: "AI & ML",
-    items: ["NumPy", "Pandas", "Scikit-learn", "Transformers"],
+    items: ["NumPy", "Pandas", "Scikit-learn", "PyTorch", "TensorFlow", "Transformers"],
     linkedProjects: ["AI Student Inquiry Chatbot", "Face Detection System"],
     milestones: [
       { title: "Deep Infinity AI Validation", date: "June 2025 – Present", description: "Validating healthcare AI radiology systems", type: "project" },
@@ -83,41 +93,60 @@ export const portfolioData: PortfolioData = {
     student_id: "JNTUA College of Engineering, Anantapur",
   },
   branding_hint: {
-    tagline: "Quantum Developer | ML Enthusiast | Quantum-AI Builder",
-    focus_areas: ["Quantum Computing", "AI/ML Systems", "Full-Stack Development"],
-    unique_selling_point: "Undergraduate with national-level quantum hackathon finalist status and hands-on experience with IBM Quantum Platform",
-    target_roles: ["Quantum Software Engineer", "ML Engineer", "Research Intern"],
+    tagline: "Machine Learning Engineer | Generative AI | Speech AI | AI Agents",
+    focus_areas: ["Generative AI & LLMs", "Speech AI", "AI Agents & Automation"],
+    unique_selling_point: "Machine Learning Engineer shipping speech and LLM systems at DeepInfinity.ai. Undergraduate with national-level quantum hackathon finalist status and hands-on experience with IBM Quantum Platform",
+    target_roles: ["Machine Learning Engineer", "Applied AI Engineer", "Generative AI / LLM Engineer"],
   },
-  summary: "Computer Science undergraduate (CGPA: 9.1/10) with strong foundations in quantum computing, machine learning, and systems engineering. Hands-on experience in quantum circuit simulation using Qiskit on IBM Quantum Platform and currently working as a System Tester Intern at an AI startup. Proven problem-solving ability through national-level hackathons and exposure to real-world AI validation pipelines. Seeking opportunities in quantum software, scientific computing, and defense-oriented deep-tech systems.",
+  summary: "Computer Science undergraduate (CGPA 8.9/10) and Machine Learning Engineer building production-oriented AI systems in Python, from LLM, speech and ML model integration to backend services and evaluation on real-world data. Experience across Generative AI, LLM applications, AI agents, NLP, Speech AI, REST/LLM API integration and n8n automation, using NVIDIA Nemotron / Riva / NIM, Whisper, Azure AI and Hugging Face. Built an AI-agent security framework combining classical ML and quantum ML (Qiskit) with NumPy and scikit-learn.",
   education: [
-    { degree: "Bachelor of Technology in Computer Science & Engineering", institution: "JNTUA College of Engineering, Anantapur", period: "2023 – 2027", cgpa: "9.1/10.0", current_status: "3-2 Year" },
+    { degree: "Bachelor of Technology in Computer Science & Engineering", institution: "JNTUA College of Engineering, Anantapur", period: "2023 – 2027", cgpa: "8.9/10.0", current_status: "3-2 Year" },
     { degree: "Intermediate (MPC)", institution: "Sri Chaitanya Junior College, Pileru", period: "2021 – 2023", score: "98.4%", board: "Board of Intermediate Education" },
     { degree: "SSC (High School)", institution: "Z.P.H.S Boys, Rompicherla", period: "2016 – 2021", score: "98.6%", board: "Board of Secondary Education" },
   ],
   skills: {
     quantum_computing: ["Quantum Circuits", "Qubits", "Quantum Gates", "Measurement", "NISQ Concepts", "Noise Models", "Qiskit", "IBM Quantum Platform"],
-    programming_languages: ["Python", "Java", "JavaScript", "C", "SQL"],
-    machine_learning: ["NumPy", "Pandas", "Scikit-learn", "Transformers"],
-    ai_platforms: ["Hugging Face", "Ollama", "Azure AI Foundry", "Google Colab", "Dialogflow"],
+    programming_languages: ["Python", "Java", "TypeScript", "JavaScript", "C", "SQL"],
+    machine_learning: ["NumPy", "Pandas", "Scikit-learn", "PyTorch", "TensorFlow", "Transformers", "NLP", "Model Evaluation"],
+    generative_ai: ["LLM APIs", "Prompt Engineering", "Structured Outputs", "Function Calling", "AI Agents", "RAG Concepts", "OpenAI-compatible APIs"],
+    speech_ai: ["NVIDIA Nemotron", "NVIDIA Riva", "OpenAI Whisper", "Azure Speech Studio", "pyannote.audio", "spaCy NER"],
+    ai_platforms: ["NVIDIA NIM", "Hugging Face", "Ollama", "Azure AI Foundry", "Google Colab", "Dialogflow"],
+    backend_devops: ["FastAPI", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "MySQL", "Docker", "GitHub Actions", "CI/CD"],
     computer_vision: ["OpenCV", "MTCNN"],
     web_development: ["HTML", "CSS", "React.js", "Node.js", "MongoDB"],
     mathematics: ["Linear Algebra", "Probability & Statistics"],
-    tools: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "n8n"],
+    tools: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "n8n (Docker)", "pytest"],
     llms: ["Llama 3", "Qwen2-VL", "MedGemma", "BLIP", "Phi3 Vision", "LLaVA-Med"],
   },
   experience: [
     {
-      title: "System Tester Intern → Permanent Intern",
-      company: "Deep Infinity (AI Startup)",
-      period: "June 2025 – Present",
+      title: "Machine Learning Engineer",
+      company: "DeepInfinity.ai",
+      period: "May 2026 – Present",
+      location: "Hyderabad, India",
+      impact: "Building a clinical speech-to-record pipeline and raising medical transcription accuracy from about 65% to 91%.",
+      responsibilities: [
+        "Architected a Python clinical-documentation pipeline: Speech → STT → Speaker Diarization → NER → LLM Structuring → FHIR/EMR output",
+        "Fine-tuned NVIDIA Nemotron speech-to-text models on custom medical-domain datasets, improving accuracy from an approximate 65% baseline to 91%",
+        "Integrated Azure Speech Studio, OpenAI Whisper, NVIDIA Nemotron and LLM APIs; built agent-style post-processing with pyannote.audio, spaCy NER and LLM inference",
+        "Implemented an on-device inference workflow with NVIDIA Riva and a clinician-feedback AI correction loop",
+        "Implemented RBAC, TLS 1.3 and DPDP/HIPAA-aligned data handling; evaluated on real user data and clinician feedback",
+      ],
+      technologies: ["NVIDIA Nemotron", "NVIDIA Riva", "Whisper", "Azure Speech", "spaCy", "pyannote.audio", "LLM APIs"],
+    },
+    {
+      title: "System Tester Intern",
+      company: "DeepInfinity.ai",
+      period: "June 2025 – Apr 2026",
       location: "Remote",
-      impact: "Promoted from intern to permanent role (May 2026). Validating AI systems that will diagnose patients — not mock projects, real healthcare software.",
+      impact: "Validated AI systems that diagnose patients, real healthcare software. Led to the Machine Learning Engineer role.",
       responsibilities: [
         "Executed functional, regression, and exploratory test suites on AI-powered radiology systems used for actual clinical diagnosis",
         "Validated ML model outputs against ground truth data — catching edge case failures before deployment",
         "Identified performance bottlenecks causing 15% latency in inference pipelines",
         "Documented critical defects in test management system; coordinated with developers for rapid hotfixes",
         "Gained end-to-end exposure to real-world AI deployment pipelines: training → validation → production handoff",
+        "Benchmarked 6+ medical Vision-Language Models from Hugging Face and built API integrations between AI models, speech systems and backend services",
       ],
       what_i_learned: [
         "How to test AI systems where failure = misdiagnosis (high-stakes QA)",
@@ -172,6 +201,56 @@ export const portfolioData: PortfolioData = {
   ],
   projects: [
     {
+      title: "GetITReady: Free Browser Tools",
+      impact: "Free PDF, image, text and media tools that run in your browser. No sign-up, files stay on your device.",
+      problem: "Everyday file tasks (merge a PDF, compress an image) push people to upload private files to ad-heavy sites.",
+      solution: "A Next.js app on Vercel where the file tools run client-side, with no database and no paid APIs.",
+      tech_stack: { framework: "Next.js, TypeScript", hosting: "Vercel", testing: "Vitest, Playwright" },
+      key_features: ["Free tools, no sign-up", "Processing stays in the browser", "Camera Studio: camera to sticker and GIF"],
+      outcome: "Live in production.",
+      period: "2026",
+    },
+    {
+      title: "Q-Guardian",
+      impact: "Runtime security for autonomous AI agents using classical and quantum ML.",
+      problem: "AI agents face prompt injection, jailbreaks and runtime threats that traditional tools do not cover.",
+      solution: "A modular FastAPI framework fusing rule-based checks, classical ML (Isolation Forest, Random Forest, XGBoost) and quantum ML (quantum kernels, QSVM in Qiskit), with policy-as-code, RBAC, risk scoring and OpenTelemetry/Prometheus observability.",
+      tech_stack: { backend: "Python, FastAPI, Pydantic", ml: "NumPy, scikit-learn, Qiskit", ops: "Docker, MongoDB, OpenTelemetry, Prometheus" },
+      key_features: ["Hybrid detector with fusion engine", "Async plugin-driven service", "Explainability and automated response"],
+      outcome: "Engineering and research project; open source on GitHub.",
+      period: "2026",
+    },
+    {
+      title: "AI Notes Maker",
+      impact: "Turns a tutoring chat into structured, exam-ready notes with a live knowledge map.",
+      problem: "Study chats vanish and notes get rewritten by hand.",
+      solution: "A Python app calling NVIDIA NIM / Nemotron through the OpenAI-compatible SDK with streaming, session memory, global search, ReportLab PDF export and multi-user auth.",
+      tech_stack: { llm: "NVIDIA NIM, Nemotron", app: "Python", quality: "pytest" },
+      key_features: ["Auto notes panel", "Interactive knowledge map", "PDF export", "Per-user data isolation"],
+      outcome: "Open source on GitHub.",
+      period: "2026",
+    },
+    {
+      title: "DeepInfinity Medical AI Workflow",
+      impact: "Converts clinical audio into structured records ready for EMR integration.",
+      problem: "Clinicians spend time documenting instead of treating patients.",
+      solution: "An end-to-end speech pipeline combining speech recognition, speaker diarization, NER and LLM-based structuring, evaluated on real clinical transcripts with iterative feedback.",
+      tech_stack: { speech: "NVIDIA Nemotron, Riva, Whisper, Azure Speech", nlp: "spaCy, Hugging Face", llm: "LLM APIs" },
+      key_features: ["Speech to structured record", "Speaker diarization", "Clinician feedback loop"],
+      outcome: "Transcription accuracy improved from about 65% to 91% (company work, no public repo).",
+      period: "2026",
+    },
+    {
+      title: "AI Job Analyzer",
+      impact: "n8n workflow that matches candidate profiles to job requirements and returns structured scores.",
+      problem: "Manual job analysis and resume screening is slow.",
+      solution: "LLM → API → structured JSON with match score, matching and missing skills and recommendations, using webhooks, conditional routing and error handling.",
+      tech_stack: { automation: "n8n", ai: "LLM APIs", data: "REST, JSON" },
+      key_features: ["Structured match output", "Webhook triggers", "Error handling"],
+      outcome: "Reduces manual screening work.",
+      period: "2026",
+    },
+    {
       title: "Quantum Job Tracker Dashboard",
       impact: "Turned opaque IBM Quantum job data into a visual dashboard used by students nationwide.",
       problem: "Quantum computing students at JNTUA struggled to understand IBM Quantum job status — raw API outputs were unreadable, job execution times unpredictable, and backend queue status invisible.",
@@ -212,6 +291,8 @@ export const portfolioData: PortfolioData = {
     { title: "Introduction to Quantum Technologies & Applications", provider: "QClairvoyance Quantum Labs Pvt. Ltd", date: "Oct 2025", link: "https://github.com/ssahilkhan/certifications/blob/main/S%20Sahil%20Khan_Certificate.pdf", image: "/images/certificates/quantum-technologies.jpg" },
     { title: "Introduction to Quantum Computing with Azure Quantum", provider: "Microsoft", date: "2025", link: "https://learn.microsoft.com/en-us/users/sahilkhansorakayalapeta-3371/achievements/fqmppehx" },
     { title: "NPTEL – Introduction to Quantum Computing: Quantum Algorithms and Qiskit", provider: "NPTEL Swayam", date: "2026" },
+    { title: "Models and Platforms for Generative AI", provider: "IBM / edX", date: "2026", link: "https://courses.edx.org/certificates/4999e240cbf1485ab4b4b236c566820f" },
+    { title: "Introduction to NLP", provider: "NPTEL, IIT Kharagpur", date: "2026", link: "https://nptel.ac.in/noc/E_Certificate/NOC26CS45S105020175304227744" },
     { title: "Introduction to Prompt Engineering", provider: "IBM", date: "Jun 2024", link: "https://courses.edx.org/certificates/c98c8ff5e4244b9288c988d4442086c9" },
     { title: "Google Cloud Arcade Facilitator Program", provider: "Google Cloud", date: "2025" },
     { title: "WISER Quantum Program Phase 2", provider: "WISER", date: "2026" },
@@ -225,6 +306,7 @@ export const portfolioData: PortfolioData = {
     linkedin: "https://www.linkedin.com/in/sahil-khan-sorakayalapeta-9006a028a",
     leetcode: "https://leetcode.com/u/ssahilkhan/",
     discord: "https://discord.com/users/ssahilkhan",
+    youtube: "",
   },
   branding: {
     headlines: [
@@ -238,7 +320,7 @@ export const portfolioData: PortfolioData = {
   },
   about: {
     who_i_am: "I grew up in a small village in Andhra Pradesh where resourcefulness was a survival skill. That mindset stuck. While others learned programming from tutorials, I started building quantum circuits on IBM's real quantum computers — not simulators. I don't wait for opportunities. I create them.",
-    what_im_doing_now: "Currently a 3rd-year Computer Science student (9.1 CGPA) at JNTUA College of Engineering. By day, I'm a System Tester Intern at an AI startup, validating radiology AI systems that will actually diagnose patients. By night (and early mornings), I'm pushing quantum algorithms on IBM Quantum Platform — running real circuits, not just theory.",
+    what_im_doing_now: "Computer Science student (8.9 CGPA) at JNTUA College of Engineering and, since May 2026, Machine Learning Engineer at DeepInfinity.ai, building clinical speech-to-record pipelines with NVIDIA Nemotron, Riva, Whisper and LLMs. On the side I build AI agents, n8n automations, free browser tools, and quantum ML experiments with Qiskit.",
     what_i_aim_to_become: "I don't want a generic software job. I'm building toward being the rare engineer who bridges quantum theory and real-world deployment. I want to work on systems that matter — quantum-powered healthcare, defense-grade AI, next-generation computing infrastructure. The future is quantum. I intend to be part of building it.",
     strengths: [
       { strength: "Self-starter", evidence: "Built quantum projects before most peers even learned what Qiskit is" },
@@ -298,14 +380,17 @@ export const blogPosts = [
 ]
 
 export const skillCategories = [
-  { category: "Quantum Computing", items: portfolioData.skills.quantum_computing },
+  { category: "Generative AI & Agents", items: portfolioData.skills.generative_ai },
+  { category: "Speech AI", items: portfolioData.skills.speech_ai },
   { category: "AI & ML", items: portfolioData.skills.machine_learning },
+  { category: "Backend & DevOps", items: portfolioData.skills.backend_devops },
   { category: "AI Platforms", items: portfolioData.skills.ai_platforms },
   { category: "LLMs", items: portfolioData.skills.llms },
   { category: "Languages", items: portfolioData.skills.programming_languages },
   { category: "Web Development", items: portfolioData.skills.web_development },
   { category: "Computer Vision", items: portfolioData.skills.computer_vision },
   { category: "Mathematics", items: portfolioData.skills.mathematics },
+  { category: "Quantum Computing", items: portfolioData.skills.quantum_computing },
   { category: "Tools & Platforms", items: portfolioData.skills.tools },
 ] as const
 

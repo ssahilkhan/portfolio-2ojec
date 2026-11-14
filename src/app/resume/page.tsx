@@ -70,7 +70,7 @@ export default function ResumePage() {
           </div>
 
           <div className="mb-6">
-            <p className="text-xs text-muted">{personal_info.email} &middot; {personal_info.phone} &middot; {personal_info.location}</p>
+            <p className="text-xs text-muted">{personal_info.email} &middot; {personal_info.location}</p>
           </div>
 
           <div className="mb-6">

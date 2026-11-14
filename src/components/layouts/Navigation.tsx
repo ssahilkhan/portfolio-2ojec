@@ -3,21 +3,21 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import ThemeToggle from "@/components/ui/ThemeToggle"
+import Button3D, { type KeyColor } from "@/components/ui/Button3D"
 
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Skills", path: "/skills" },
-  { name: "Projects", path: "/projects" },
-  { name: "Experience", path: "/experience" },
-  { name: "Achievements", path: "/achievements" },
-  { name: "Resume", path: "/resume" },
-  { name: "Blog", path: "/blog" },
-  { name: "Contact", path: "/contact" },
+const navLinks: { name: string; path: string; color: KeyColor }[] = [
+  { name: "Home", path: "/", color: "ink" },
+  { name: "About", path: "/about", color: "cobalt" },
+  { name: "Skills", path: "/skills", color: "mint" },
+  { name: "Projects", path: "/projects", color: "sun" },
+  { name: "Experience", path: "/experience", color: "coral" },
+  { name: "Achievements", path: "/achievements", color: "cobalt" },
+  { name: "Resume", path: "/resume", color: "mint" },
+  { name: "Blog", path: "/blog", color: "ink" },
+  { name: "Contact", path: "/contact", color: "coral" },
 ]
 
 export default function Navigation() {
@@ -26,8 +26,8 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener("scroll", handleScroll)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -39,104 +39,45 @@ export default function Navigation() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled
-          ? "glass border-b border-border"
-          : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
+        scrolled || isOpen ? "glass border-b border-border" : "bg-transparent"
       )}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="group relative">
-          <span className="text-xl font-bold text-gradient-orange">
-            SK<span className="text-magenta">.</span>
-          </span>
-          <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-gradient-to-r from-orange to-magenta transition-all duration-300 group-hover:w-full" />
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6" aria-label="Main">
+        <Link href="/" className="whitespace-nowrap font-display text-xl font-extrabold tracking-tight">
+          Sahil<span className="text-orange"> Khan</span>
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.path
-            return (
-              <Link
-                key={link.path}
-                href={link.path}
-                className={cn(
-                  "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                  isActive
-                    ? "text-orange"
-                    : "text-muted hover:text-foreground"
-                )}
-              >
-                {link.name}
-                {isActive && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute inset-0 rounded-full bg-orange/10 border border-orange/20"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </Link>
-            )
-          })}
+        <div className="hidden items-center justify-end gap-x-2 xl:flex">
+          {navLinks.map((l) => (
+            <Button3D key={l.path} href={l.path} color={l.color} size="sm" active={pathname === l.path}>
+              {l.name}
+            </Button3D>
+          ))}
         </div>
 
         <div className="flex items-center gap-2">
-          <div className={cn(isOpen && "hidden")}>
-            <ThemeToggle />
-          </div>
-
+          <ThemeToggle />
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="relative z-50 rounded-full p-2 text-foreground md:hidden hover:bg-white/5 transition-colors"
-            aria-label="Toggle menu"
+            className="rounded-full p-2 text-foreground transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current xl:hidden"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </nav>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-background/95 backdrop-blur-xl md:hidden"
-          >
-            {navLinks.map((link, i) => (
-              <motion.div
-                key={link.path}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
-              >
-                <Link
-                  href={link.path}
-                  className={cn(
-                    "text-2xl font-bold transition-colors",
-                    pathname === link.path
-                      ? "text-gradient-orange"
-                      : "text-muted hover:text-foreground"
-                  )}
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: navLinks.length * 0.05 + 0.15 }}
-              className="mt-6 flex flex-col items-center gap-3"
-            >
-              <div className="h-px w-16 bg-border" />
-              <ThemeToggle />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isOpen && (
+        <div className="grid max-h-[calc(100vh-4.5rem)] grid-cols-2 gap-x-4 gap-y-1 overflow-y-auto px-4 pt-2 pb-6 sm:grid-cols-3 xl:hidden">
+          {navLinks.map((l) => (
+            <Button3D key={l.path} href={l.path} color={l.color} block active={pathname === l.path}>
+              {l.name}
+            </Button3D>
+          ))}
+        </div>
+      )}
     </header>
   )
 }

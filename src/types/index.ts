@@ -87,6 +87,7 @@ export interface ContactLinks {
   linkedin: string
   leetcode: string
   discord: string
+  youtube?: string
 }
 
 export interface Testimonial {

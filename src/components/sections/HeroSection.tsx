@@ -1,176 +1,34 @@
-"use client"
-
-import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
-import Link from "next/link"
-import { ArrowDown, ArrowRight, RotateCcw } from "lucide-react"
+import { Code, Briefcase, Mail } from "lucide-react"
 import { portfolioData } from "@/data/portfolio"
-import FloatingText3D from "@/components/effects/FloatingText3D"
-import QuantumWordCycle from "@/components/effects/QuantumWordCycle"
-import MorphingBackground from "@/components/effects/MorphingBackground"
-
-const STORAGE_KEY = "hero-style"
-
-function getStoredStyle(): "quantum" | "classic" {
-  if (typeof window !== "undefined") {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    if (stored === "classic" || stored === "quantum") return stored
-  }
-  return "classic"
-}
-
-function ClassicHero() {
-  const headline = portfolioData.branding.headlines[0]
-  const tagline = portfolioData.branding_hint.tagline
-
-  return (
-    <>
-      <div className="mb-6 inline-block">
-        <span className="animate-pulse-slow inline-block rounded-full border border-orange/20 bg-orange/5 px-4 py-1.5 text-xs font-medium text-orange tracking-wide uppercase">
-          {portfolioData.personal_info.current_year} &middot; {portfolioData.personal_info.student_id}
-        </span>
-      </div>
-
-      <div className="mb-8 flex justify-center">
-        <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-orange/30 ring-2 ring-orange/10 shadow-[0_0_30px_var(--glow-orange)]">
-          <Image
-            src="/images/sahil_professional_Image.jpeg"
-            alt={portfolioData.personal_info.name}
-            fill
-            className="object-cover"
-            sizes="128px"
-            priority
-          />
-        </div>
-      </div>
-
-      <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl lg:text-7xl">
-        <span className="text-foreground">{portfolioData.personal_info.name.split(" ")[0]} </span>
-        <span className="text-gradient">{portfolioData.personal_info.name.split(" ")[1]}</span>
-      </h1>
-
-      <p className="mx-auto mb-4 max-w-2xl text-lg text-muted md:text-xl leading-relaxed">
-        {headline}
-      </p>
-
-      <p className="mx-auto mb-8 max-w-xl text-sm text-muted">
-        {tagline}
-      </p>
-    </>
-  )
-}
-
-function QuantumHero() {
-  return (
-    <>
-      <MorphingBackground />
-
-      <div className="relative z-10 mb-6 inline-block">
-        <span
-          className="inline-block rounded-full border px-4 py-1.5 text-xs font-medium tracking-wide uppercase"
-          style={{
-            borderColor: "rgba(212, 175, 55, 0.2)",
-            color: "#D4AF37",
-            backgroundColor: "rgba(212, 175, 55, 0.08)",
-          }}
-        >
-          {portfolioData.personal_info.current_year} &middot; {portfolioData.personal_info.student_id}
-        </span>
-      </div>
-
-      <div className="relative z-10 mb-4">
-        <FloatingText3D />
-      </div>
-
-      <div className="relative z-10 mb-8">
-        <QuantumWordCycle />
-      </div>
-
-      <p className="relative z-10 mx-auto mb-8 max-w-xl text-sm text-[#B6B6B6]/80">
-        {portfolioData.branding_hint.tagline}
-      </p>
-    </>
-  )
-}
+import Button3D from "@/components/ui/Button3D"
 
 export default function HeroSection() {
-  const [style, setStyle] = useState<"quantum" | "classic">("classic")
-  const [mounted, setMounted] = useState(false)
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    setMounted(true)
-    setStyle(getStoredStyle())
-  }, [])
-
-  const toggleStyle = () => {
-    const next = style === "quantum" ? "classic" : "quantum"
-    setStyle(next)
-    localStorage.setItem(STORAGE_KEY, next)
-  }
-
-  if (!mounted) {
-    return (
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="h-8 w-48 mx-auto rounded bg-white/5 animate-pulse mb-6" />
-          <div className="h-16 w-64 mx-auto rounded bg-white/5 animate-pulse mb-6" />
-        </div>
-      </section>
-    )
-  }
-
+  const { personal_info, branding_hint, contact_links } = portfolioData
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
-        {style === "quantum" ? <QuantumHero /> : <ClassicHero />}
-
-        <div className="relative z-10 flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href="/projects"
-            className="group relative inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.3)]"
-            style={{
-              background: "linear-gradient(135deg, #D4AF37, #E91E8C)",
-            }}
-          >
-            View My Work
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-          </Link>
-          <Link
-            href="/about"
-            className="glass-hover inline-flex items-center gap-2 rounded-full border px-8 py-3 text-sm font-semibold text-foreground transition-all duration-300"
-            style={{ borderColor: "rgba(212, 175, 55, 0.15)" }}
-          >
-            About Me
-          </Link>
-        </div>
-
-        <div className="relative z-10 mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-[#B6B6B6]">
-          {portfolioData.branding_hint.focus_areas.map((area) => (
-            <span key={area} className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#D4AF37" }} />
-              {area}
-            </span>
-          ))}
+    <section className="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-32 pb-16 sm:px-6 md:grid-cols-[1.4fr_1fr] md:pt-40">
+      <div>
+        <p className="mb-3 text-muted">Hi, I&apos;m</p>
+        <h1 className="font-display text-5xl leading-[1.02] font-extrabold sm:text-7xl">{personal_info.name}</h1>
+        <p className="mt-5 max-w-xl text-lg text-muted">{branding_hint.tagline}</p>
+        <p className="mt-2 max-w-xl text-muted">{personal_info.location}. Machine Learning Engineer at DeepInfinity.ai.</p>
+        <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2">
+          <Button3D href="/projects" color="sun" size="lg">See my projects</Button3D>
+          <Button3D href="#youtube" color="coral" size="lg">Watch my videos</Button3D>
+          <Button3D href={contact_links.github} color="ink" icon={<Code size={18} />}>GitHub</Button3D>
+          <Button3D href={contact_links.linkedin} color="cobalt" icon={<Briefcase size={18} />}>LinkedIn</Button3D>
+          <Button3D href="/contact" color="mint" icon={<Mail size={18} />}>Contact</Button3D>
         </div>
       </div>
-
-      <button
-        onClick={toggleStyle}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full border px-4 py-2 text-xs text-muted transition-all duration-300 hover:scale-105"
-        style={{
-          borderColor: "var(--border-color)",
-          backgroundColor: "var(--bg-card)",
-          backdropFilter: "blur(12px)",
-        }}
-        title={`Switch to ${style === "quantum" ? "classic" : "quantum"} style`}
-      >
-        <RotateCcw size={12} />
-        {style === "quantum" ? "Classic" : "Quantum"}
-      </button>
-
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <ArrowDown size={20} className="text-muted" />
+      <div className="mx-auto w-full max-w-xs">
+        <Image
+          src="/images/sahil_professional_Image.jpeg"
+          alt={`Portrait of ${personal_info.name}`}
+          width={640}
+          height={800}
+          priority
+          className="aspect-[4/5] w-full rounded-3xl border border-border object-cover shadow-[0_12px_0_var(--brand-navy-light),0_28px_40px_rgba(0,0,0,0.35)]"
+        />
       </div>
     </section>
   )
