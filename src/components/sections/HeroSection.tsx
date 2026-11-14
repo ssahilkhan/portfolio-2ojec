@@ -22,12 +22,12 @@ export default function HeroSection() {
       </div>
       <div className="mx-auto w-full max-w-xs">
         <Image
-          src="/images/sahil_professional_Image.jpeg"
+          src="/images/sahil_portrait.jpeg"
           alt={`Portrait of ${personal_info.name}`}
-          width={640}
+          width={800}
           height={800}
           priority
-          className="aspect-[4/5] w-full rounded-3xl border border-border object-cover shadow-[0_12px_0_var(--brand-navy-light),0_28px_40px_rgba(0,0,0,0.35)]"
+          className="aspect-square w-full rounded-full object-cover shadow-[0_12px_0_var(--brand-navy-light),0_28px_40px_rgba(0,0,0,0.35)]"
         />
       </div>
     </section>
