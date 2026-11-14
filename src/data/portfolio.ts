@@ -306,7 +306,7 @@ export const portfolioData: PortfolioData = {
     linkedin: "https://www.linkedin.com/in/sahil-khan-sorakayalapeta-9006a028a",
     leetcode: "https://leetcode.com/u/ssahilkhan/",
     discord: "https://discord.com/users/ssahilkhan",
-    youtube: "",
+    youtube: "https://www.youtube.com/@ai.sahilkhan",
   },
   branding: {
     headlines: [
